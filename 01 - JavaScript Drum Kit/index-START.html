@@ -58,7 +58,21 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-
+window.addEventListener('keydown', function(e) {
+  //console.log(e.keyCode);
+  const audioToPlay = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const keyColor=document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  //console.log(audioToPlay);
+  if(!audioToPlay) return;
+  audioToPlay.currentTime=0;
+  audioToPlay.play();
+  //console.log(keyColor);
+  keyColor.classList.add('playing')
+});
+window.addEventListener('keyup', function(e) {
+  const keyColor=document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  keyColor.classList.remove('playing')
+});
 </script>
 
 
